@@ -27,23 +27,36 @@ class Client():
     def load_client_by_uuid(self, logfile, uuid):
         found = False
         f = open(logfile, "r")
-        fuuid = Util.get_log_uuid(f.readline())
+        string = f.readline()
+        fuuid = Util.get_log_uuid(string)
         while not found:
             if fuuid is uuid:
                 found = True
+                self.uuid = uuid
+                self.ip = Util.get_log_ip(string)
+                self.cookie = Util.get_log_cookie(string)
+                break
             else:
-                fuuid = Util.get_log_uuid(f.readline())
+                string = f.readline()
+                fuuid = Util.get_log_uuid(string)
+        
         
         
     def load_client_by_cookie(self, logfile, cookie):
         found = False
         f = open(logfile, "r")
-        fcookie = Util.get_log_cookie(f.readline())
+        string = f.readline()
+        fcookie = Util.get_log_cookie(string)
         while not found:
             if fcookie is cookie:
                 found = True
+                self.uuid = Util.get_log_uuid(string)
+                self.ip = Util.get_log_ip(string)
+                self.cookie = Util.get_log_cookie(string)
+                break
             else:
-                fcookie = Util.get_log_cookie(f.readline())
+                string = f.readline()
+                fcookie = Util.get_log_cookie(string)
     
     
     def get_user_data(self):
