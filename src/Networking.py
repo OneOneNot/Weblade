@@ -78,6 +78,10 @@ class Client():
         
     def new_user(self, ip):
         print ""
+        
+        
+    def update_client(self, logfile):
+        self.save_client(logfile)
 
 
 class Server():
