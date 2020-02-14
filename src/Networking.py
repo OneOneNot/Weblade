@@ -2,6 +2,7 @@
 # 14/2/2020
 
 import socket
+import util
 
 
 class Client():
@@ -25,7 +26,7 @@ class Client():
         
     def load_client(self, logfile, uuid):
         f = open(lodfile, "r")
-        
+        fuuid = util.get_log_uuid(f.readline())
         while fuuid is not uuid:
             print "not found"
         
