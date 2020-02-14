@@ -5,3 +5,4 @@ def get_log_uuid(log):
 
 def get_log_cookie(log):
     cookie = log[-10:]
+    return cookie
