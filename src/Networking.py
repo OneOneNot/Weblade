@@ -13,10 +13,10 @@ class Client():
         self.cookie = ""
         self.uuid = uuid
         
-        
+    # This function is saving in a file the user data   
     def save_client(self, logfile):
         sep = "\n"
-        client = self.ip + self.cookie
+        client = self.uuid + self.ip + self.cookie
         f = open(logfile, "r")
         prlog = f.read()
         f.close()
@@ -24,7 +24,7 @@ class Client():
         f.write(prlog + sep + client)
         
         
-    def load_client(self, logfile, uuid):
+    def load_client_by_uuid(self, logfile, uuid):
         found = False
         f = open(logfile, "r")
         fuuid = Util.get_log_uuid(f.readline())
@@ -34,6 +34,17 @@ class Client():
             else:
                 fuuid = Util.get_log_uuid(f.readline())
         
+        
+    def load_client_by_cookie(self, logfile, cookie):
+        found = False
+        f = open(logfile, "r")
+        fcookie = Util.get_log_cookie(f.readline())
+        while not found:
+            if fcookie is cookie:
+                found = True
+            else:
+                fcookie = Util.get_log_cookie(f.readline())
+    
     
     def get_user_data(self):
         print ""
