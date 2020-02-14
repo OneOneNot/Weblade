@@ -4,16 +4,16 @@
 import socket
 import Util
 
-
+# This class handles client data
 class Client():
-    # This class handles client data
+    
     def __init__(self, uuid):
         self.ip = "0.0.0.0"
         self.port = 0000
         self.cookie = ""
         self.uuid = uuid
         
-    # This function is saving in a file the user data   
+    # This function saves the user data in a file   
     def save_client(self, logfile):
         sep = "\n"
         client = self.uuid + self.ip + self.cookie
@@ -23,8 +23,8 @@ class Client():
         f = open(logfile, "w")
         f.write(prlog + sep + client)
         
-        
-    def load_client_by_uuid(self, logfile, uuid):
+    # This function loads a user from the log using the uuid    
+    def load_client_by_uuid(self, logfile, uuid, mode):
         found = False
         f = open(logfile, "r")
         string = f.readline()
@@ -32,17 +32,19 @@ class Client():
         while not found:
             if fuuid is uuid:
                 found = True
-                self.uuid = uuid
-                self.ip = Util.get_log_ip(string)
-                self.cookie = Util.get_log_cookie(string)
+                if mode is 1:
+                    self.uuid = uuid
+                    self.ip = Util.get_log_ip(string)
+                    self.cookie = Util.get_log_cookie(string)
                 break
+                return 1
             else:
                 string = f.readline()
                 fuuid = Util.get_log_uuid(string)
         
         
-        
-    def load_client_by_cookie(self, logfile, cookie):
+    # This function loads a user from the log using the cookie   
+    def load_client_by_cookie(self, logfile, cookie, mode):
         found = False
         f = open(logfile, "r")
         string = f.readline()
@@ -50,10 +52,12 @@ class Client():
         while not found:
             if fcookie is cookie:
                 found = True
-                self.uuid = Util.get_log_uuid(string)
-                self.ip = Util.get_log_ip(string)
-                self.cookie = Util.get_log_cookie(string)
+                if mode is 1:
+                    self.uuid = Util.get_log_uuid(string)
+                    self.ip = Util.get_log_ip(string)
+                    self.cookie = Util.get_log_cookie(string)
                 break
+                return 1
             else:
                 string = f.readline()
                 fcookie = Util.get_log_cookie(string)
@@ -65,6 +69,14 @@ class Client():
         
     def delete_user(self):
         print ""
+        
+        
+    def delete_global_user(self):
+        print ""
+        
+        
+    def new_user(self, ip):
+        
 
 
 class Server():
