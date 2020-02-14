@@ -23,8 +23,11 @@ class Client():
         f.write(prlog + sep + client)
         
         
-    def load_client(self, logfile):
-        print ""
+    def load_client(self, logfile, uuid):
+        f = open(lodfile, "r")
+        
+        while fuuid is not uuid:
+            print "not found"
         
     
     def get_user_data(self):
