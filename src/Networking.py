@@ -76,7 +76,7 @@ class Client():
         
         
     def new_user(self, ip):
-        
+        print ""
 
 
 class Server():
