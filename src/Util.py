@@ -1,3 +1,3 @@
 def get_log_uuid(log):
-    uuid = log[:9]
+    uuid = log[:10]
     return uuid
