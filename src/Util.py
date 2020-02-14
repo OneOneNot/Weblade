@@ -15,3 +15,7 @@ def get_log_cookie(log):
 def get_log_ip(log):
     ip = log[10:-10]
     return ip
+
+# Server util
+def redirect():
+    print ""
