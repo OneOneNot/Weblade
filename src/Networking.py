@@ -128,10 +128,3 @@ class Server():
         
         
         
-class Util():
-    def __init__(self):
-        print ""
-        
-    
-    def redirect(self):
-        print ""
