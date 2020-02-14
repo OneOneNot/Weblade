@@ -25,10 +25,14 @@ class Client():
         
         
     def load_client(self, logfile, uuid):
+        found = False
         f = open(logfile, "r")
         fuuid = Util.get_log_uuid(f.readline())
-        while fuuid is not uuid:
-            print "not found"
+        while not found:
+            if fuuid is uuid:
+                found = True
+            else:
+                fuuid = Util.get_log_uuid(f.readline())
         
     
     def get_user_data(self):
