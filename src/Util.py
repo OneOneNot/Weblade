@@ -22,6 +22,7 @@ def redirect():
     
 # 15/2/2020
 
+# Cryptography functions
 def webhash(string, hashsize):
     
     # Step 1 Seperate
