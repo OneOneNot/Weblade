@@ -65,7 +65,10 @@ def webhash(string, hashsize):
     while i is not hashsize:
         colsum = 0
         j = 0
-        while j is not (len(string)/hashsize):
+        print len(parts)
+        while j is not len(parts):
+            print j
+            print flist[i][j]
             colsum += flist[i][j]
             j += 1
         finalhashlist.append(colsum)
