@@ -1,6 +1,5 @@
 # Writen by OneOneNot
 # 14/2/2020
-# No liesence
 
 import socket
 import Util
