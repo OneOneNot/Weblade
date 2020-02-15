@@ -53,8 +53,9 @@ def webhash(string, hashsize):
                     chars.insert(j, chars[j] + chars[j + 1])
                 else:
                     chars.insert(j, chars[j] + chars[0])
-                flist.append(chars)
-                j += 1
+                    j += 1
+            flist.append(chars)
+                
             i += 1
             
     # Step 3 Final hash
@@ -62,7 +63,7 @@ def webhash(string, hashsize):
     finalhashlist = []
     i = 0
     # Step 3.1 Calculate
-    
+
     while i is not hashsize:
         colsum = 0
         j = 0
@@ -71,7 +72,7 @@ def webhash(string, hashsize):
             j += 1
         finalhashlist.append(colsum)
         i += 1
-        
+
     # Step 3.2 Convert
     finalhash = ""
     for fhl in finalhashlist:
