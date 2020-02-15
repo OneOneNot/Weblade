@@ -23,6 +23,9 @@ def redirect():
 # 15/2/2020
 
 def webhash(string, hashsize):
+    
+    # Step 1 Seperate
+    
     rem = len(string) % hashsize
     if rem is not 0:
         string += "0" * rem
@@ -34,4 +37,16 @@ def webhash(string, hashsize):
         parts.append(string[prevpoint:hashsize*i])
         prevpoint = hashsize*i
         i += 1
-    return parts
+    
+    # Step 2 Hash
+    
+    for part in parts:
+        prt = part
+        i = 0
+        while i is not len(prt):
+            chars = []
+            chars.append(ord(prt[i]))
+            j = 0
+            while j is not hashsize:
+                
+    #return parts
