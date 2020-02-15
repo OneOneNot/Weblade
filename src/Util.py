@@ -62,13 +62,11 @@ def webhash(string, hashsize):
     finalhashlist = []
     i = 0
     # Step 3.1 Calculate
+    
     while i is not hashsize:
         colsum = 0
         j = 0
-        print len(parts)
-        while j is not len(parts):
-            print j
-            print flist[i][j]
+        while j is not len(flist[i]):
             colsum += flist[i][j]
             j += 1
         finalhashlist.append(colsum)
@@ -77,6 +75,6 @@ def webhash(string, hashsize):
     # Step 3.2 Convert
     finalhash = ""
     for fhl in finalhashlist:
-        finalhash += chr(fhl/256)
+        finalhash += chr(fhl/255)
     print finalhashlist
     return finalhash
