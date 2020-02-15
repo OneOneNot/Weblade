@@ -38,8 +38,9 @@ def webhash(string, hashsize):
         prevpoint = hashsize*i
         i += 1
     
-    # Step 2 Hash
+    # Step 2 Setup
     
+    flist = []
     for part in parts:
         prt = part
         i = 0
@@ -48,5 +49,31 @@ def webhash(string, hashsize):
             chars.append(ord(prt[i]))
             j = 0
             while j is not hashsize:
-                
-    #return parts
+                if j is not (len(chars) - 1):
+                    chars.insert(j, chars[j] + chars[j + 1])
+                else:
+                    chars.insert(j, chars[j] + chars[0])
+                flist.append(chars)
+                j += 1
+            i += 1
+            
+    # Step 3 Final hash
+    
+    finalhashlist = []
+    i = 0
+    # Step 3.1 Calculate
+    while i is not hashsize:
+        colsum = 0
+        j = 0
+        while j is not (len(string)/hashsize):
+            colsum += flist[i][j]
+            j += 1
+        finalhashlist.append(colsum)
+        i += 1
+        
+    # Step 3.2 Convert
+    finalhash = ""
+    for fhl in finalhashlist:
+        finalhash += chr(fhl/256)
+    print finalhashlist
+    return finalhash
